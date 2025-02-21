@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ssr-18n-angular19": {
+    "ssr-i18n-angular19": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -13,15 +13,28 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
+      "i18n": {
+        "sourceLocale": {
+          "code": "de",
+          "subPath": "de"
+        },
+        "locales": {
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "subPath": "en"
+          }
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ssr-18n-angular19",
+            "outputPath": "dist/ssr-i18n-angular19",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
@@ -37,6 +50,7 @@
             "scripts": [],
             "server": "src/main.server.ts",
             "outputMode": "server",
+            "localize": true,
             "ssr": {
               "entry": "src/server.ts"
             }
@@ -69,23 +83,28 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ssr-18n-angular19:build:production"
+              "buildTarget": "ssr-i18n-angular19:build:production"
             },
             "development": {
-              "buildTarget": "ssr-18n-angular19:build:development"
+              "buildTarget": "ssr-i18n-angular19:build:development"
             }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "buildTarget": "ssr-i18n-angular19:build",
+            "outputPath": "src/locale"
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "polyfills": [
               "zone.js",
-              "zone.js/testing"
+              "zone.js/testing",
+              "@angular/localize/init"
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
