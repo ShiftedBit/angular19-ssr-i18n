@@ -2,6 +2,34 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
 
+# Angular 19.1 with SSR and @angular/localize
+
+This is a showcase how you can generate an SSR enabled Angular Project which uses @angular/localize. 
+
+## Installation
+
+Clone the project and run 
+
+```bash
+npm i
+```
+
+## Build
+
+```bash
+npm run start build
+```
+
+This builds the app and all languages into the dist folder
+
+## Run
+
+For running the server you just have to run
+
+```bash
+node dist/ssr-i18n-angular19/server/server.mjs 
+```
+
 ## Development server
 
 To start a local development server, run:
