@@ -1,8 +1,6 @@
-# Ssr18nAngular19
+# Angular 19.1 with SSR and @angular/localize
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.8.
-
-# Angular 19.1 with SSR and @angular/localize
 
 This is a showcase how you can generate an SSR enabled Angular Project which uses @angular/localize. 
 
